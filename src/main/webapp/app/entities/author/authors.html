@@ -21,6 +21,7 @@
                     <th jh-sort-by="id"><span>ID</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span>Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="birthDate"><span>Birth Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th><span>Books</span></th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,7 +29,8 @@
                 <tr ng-repeat="author in vm.authors track by author.id">
                     <td><a ui-sref="author-detail({id:author.id})">{{author.id}}</a></td>
                     <td>{{author.name}}</td>
-                        <td>{{author.birthDate | date:'mediumDate'}}</td>
+                    <td>{{author.birthDate | date:'mediumDate'}}</td>
+                    <td>{{author.books}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

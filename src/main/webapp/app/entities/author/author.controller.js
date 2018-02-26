@@ -5,9 +5,9 @@
         .module('protractorTechDemoApp')
         .controller('AuthorController', AuthorController);
 
-    AuthorController.$inject = ['Author', 'ParseLinks', 'AlertService', 'paginationConstants'];
+    AuthorController.$inject = ['Author', 'Book', 'ParseLinks', 'AlertService', 'paginationConstants', '$log'];
 
-    function AuthorController(Author, ParseLinks, AlertService, paginationConstants) {
+    function AuthorController(Author, Book, ParseLinks, AlertService, paginationConstants, $log) {
 
         var vm = this;
 
@@ -25,6 +25,7 @@
         loadAll();
 
         function loadAll () {
+            $log.debug("author.controller::loadAll");
             Author.query({
                 page: vm.page,
                 size: vm.itemsPerPage,
@@ -42,8 +43,27 @@
                 vm.links = ParseLinks.parse(headers('link'));
                 vm.totalItems = headers('X-Total-Count');
                 for (var i = 0; i < data.length; i++) {
+                    var entity = data[i];
+                    //entity.books = Book.query();
+                    assignBooks(entity);
                     vm.authors.push(data[i]);
                 }
+            }
+
+            function assignBooks(entity) {
+                $log.debug("Entity : " + entity.name);
+                Book.query().$promise.then(function(response) {
+                    var res = "";
+                    if (response.length == 0) {
+                        res = "None";
+                    } else {
+                        for (var i = 0; i < response.length - 1; i++) {
+                            res += response[i].title + ", ";
+                        }
+                        res += response[response.length - 1].title;
+                    }
+                    entity.books = res;
+                });
             }
 
             function onError(error) {
