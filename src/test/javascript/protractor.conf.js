@@ -20,14 +20,12 @@ exports.config = {
     suites: {
         account: './e2e/account/*.js',
         admin: './e2e/admin/*.js',
-        entity: './e2e/entities/*.js'
+        entity: './e2e/entities/*.js',
+        author: './e2e/entities/author.js'
     },
 
     capabilities: {
-        'browserName': 'chrome',
-        chromeOptions: {
-            args: ["--headless", "--disable-gpu"]
-        }
+        'browserName': 'firefox'
     },
 
     directConnect: true,
