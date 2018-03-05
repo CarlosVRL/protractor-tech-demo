@@ -1,5 +1,10 @@
 'use strict';
 
+var loginPage = new (require('../../api/LoginPage'))();
+
+/**
+ * Author entity e2e test specifications.
+ */
 describe('Author e2e test', function () {
 
     var username = element(by.id('username'));
@@ -10,29 +15,32 @@ describe('Author e2e test', function () {
     var logout = element(by.id('logout'));
 
     beforeAll(function () {
-        browser.get('/');
-
-        accountMenu.click();
-        login.click();
-
-        username.sendKeys('admin');
-        password.sendKeys('admin');
-        element(by.css('button[type=submit]')).click();
+        loginPage.loginAsAdmin();
     });
 
-    it('should load Authors', function () {
-        entityMenu.click();
-        element.all(by.css('[ui-sref="author"]')).first().click().then(function() {
-            expect(element.all(by.css('h2')).first().getText()).toMatch(/Authors/);
-        });
+    it('should create and delete an Author', function () {
+//        entityMenu.click();
+//        element.all(by.css('[ui-sref="author"]')).first().click().then(function() {
+//            expect(element.all(by.css('h2')).first().getText()).toMatch(/Authors/);
+//        });
+        // goto the author page
+
+
+        // click on the create modal
+
+        // define name and birth date
+
+        // save
+
+        // delete
     });
 
-    it('should load create Author dialog', function () {
-        element(by.css('[ui-sref="author.new"]')).click().then(function() {
-            expect(element(by.css('h4.modal-title')).getText()).toMatch(/Create or edit a Author/);
-            element(by.css('button.close')).click();
-        });
-    });
+//    it('should load create Author dialog', function () {
+//        element(by.css('[ui-sref="author.new"]')).click().then(function() {
+//            expect(element(by.css('h4.modal-title')).getText()).toMatch(/Create or edit a Author/);
+//            element(by.css('button.close')).click();
+//        });
+//    });
 
     afterAll(function () {
         accountMenu.click();
