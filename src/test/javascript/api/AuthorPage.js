@@ -92,7 +92,7 @@ class AuthorPage {
      */
     checkJenkinsAuthor() {
         expect(this.selectByName(this.jenkinsName).getRow().isPresent())
-            .toBeTruthy('after creating an Author, the record should be visible');
+            .toBeTruthy('after creating an Author named ' + this.jenkinsName + ', the record should be visible');
         return this;
     }
 }
