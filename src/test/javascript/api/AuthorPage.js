@@ -6,6 +6,14 @@
 class AuthorPage {
 
     /**
+     * Default field values.
+     */
+    constructor() {
+        this.jenkinsName = 'Jenkins_Author';
+        this.jenkinsBirthDate = '2000-01-01';
+    }
+
+    /**
      * Goto the entity page.
      */
     goto() {
@@ -45,8 +53,8 @@ class AuthorPage {
     createJenkinsAuthor() {
         this.goto();
         this.create()
-            .setName('Jenkins_Author')
-            .setBirthDate('1999-01-01')
+            .setName(this.jenkinsName)
+            .setBirthDate(this.jenkinsBirthDate)
             .save();
         return this;
     }
@@ -75,7 +83,7 @@ class AuthorPage {
     }
 
     trashJenkinsAuthor() {
-        this.selectByName('Jenkins_Author').trash();
+        this.selectByName(this.jenkinsName).trash();
         return this;
     }
 
@@ -83,7 +91,7 @@ class AuthorPage {
      * Check if the selected entity exists.
      */
     checkJenkinsAuthor() {
-        expect(this.selectByName('Jenkins_Author').getRow().isPresent())
+        expect(this.selectByName(this.jenkinsName).getRow().isPresent())
             .toBeTruthy('after creating an Author, the record should be visible');
         return this;
     }
