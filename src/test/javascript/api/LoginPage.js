@@ -61,6 +61,15 @@ class LoginPage {
         const ROOT_URL = '/';
         browser.get(ROOT_URL);
     }
+
+    /**
+     * Logout of the application.
+     */
+    logout() {
+        element(by.id('account-menu')).click();
+        element(by.id('logout')).click();
+        return this;
+    }
 }
 
 module.exports = LoginPage;

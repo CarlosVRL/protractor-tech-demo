@@ -8,9 +8,6 @@ var authorPage = new (require('../../api/AuthorPage'))();
  */
 describe('Author e2e test', function () {
 
-    var accountMenu = element(by.id('account-menu'));
-    var logout = element(by.id('logout'));
-
     beforeAll(function () {
         loginPage.loginAsAdmin();
     });
@@ -23,7 +20,6 @@ describe('Author e2e test', function () {
     });
 
     afterAll(function () {
-        accountMenu.click();
-        logout.click();
+        loginPage.logout();
     });
 });
