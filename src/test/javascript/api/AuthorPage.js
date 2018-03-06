@@ -59,7 +59,6 @@ class AuthorPage {
         return this;
     }
 
-
     /**
      * Select an entity.
      */
