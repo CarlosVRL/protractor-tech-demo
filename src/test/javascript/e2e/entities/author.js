@@ -4,9 +4,9 @@ var loginPage  = new (require('../../api/LoginPage'))();
 var authorPage = new (require('../../api/AuthorPage'))();
 
 /**
- * Author entity e2e test specifications.
+ * Author smoke test specifications.
  */
-describe('Author e2e test', function () {
+describe('Author smoke test', function () {
 
     beforeAll(function () {
         loginPage.loginAsAdmin();
