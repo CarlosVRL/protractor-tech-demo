@@ -14,8 +14,6 @@ describe('Book e2e test', function () {
             .createJenkinsBook()
             .checkJenkinsBook()
             .trashJenkinsBook();
-
-        browser.sleep(2500);
     });
 
     afterAll(function () {

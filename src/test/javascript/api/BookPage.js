@@ -116,7 +116,4 @@ module.exports = class BookPage {
             .toBeTruthy('after creating a Book named "' + this.jenkinsTitle + '", the record should be visible');
         return this;
     }
-
-
-
 }
