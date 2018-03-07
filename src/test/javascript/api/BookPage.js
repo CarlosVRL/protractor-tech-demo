@@ -96,6 +96,10 @@ module.exports = class BookPage {
         return this.row;
     }
 
+    getJenkinsTitle() {
+        return this.jenkinsTitle;
+    }
+
     /**
      * Delete the selected entity.
      */

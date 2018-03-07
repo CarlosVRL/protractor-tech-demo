@@ -69,6 +69,12 @@ class AuthorPage {
         return this;
     }
 
+    selectByBookTitle(bookTitle) {
+        var book_field = element(by.cssContainingText('ng-binding', bookTitle));
+        this.row = book_field.element(by.xpath('..'));
+        return this;
+    }
+
     getRow() {
         return this.row;
     }

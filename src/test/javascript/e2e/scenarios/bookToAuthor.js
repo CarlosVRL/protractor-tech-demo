@@ -14,11 +14,19 @@ describe('Book to Author scenario test', function () {
     })
 
     it('should not show books that are not assigned to an Author', function () {
-        // test code goes here!
+        // Initialize the author
+        authorPage.createJenkinsAuthor();
 
+        // Create a book without an author
+        bookPage.createJenkinsBook();
 
+        authorPage.goto();
+        expect(authorPage.selectByBookTitle(bookPage.getJenkinsTitle()).getRow().isPresent())
+            .toBeTruthy('the book should NOT appear on the Author page');
 
-        expect(true).toBeFalsy('test forced to fail until entities are initialized');
+        // Cleanup
+        bookPage.trashJenkinsBook();
+        authorPage.trashJenkinsAuthor();
     })
 
     afterAll(function () {
