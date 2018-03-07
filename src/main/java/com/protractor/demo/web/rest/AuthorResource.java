@@ -5,12 +5,14 @@ import com.protractor.demo.domain.Author;
 
 import com.protractor.demo.domain.Book;
 import com.protractor.demo.repository.AuthorRepository;
+import com.protractor.demo.repository.BookRepository;
 import com.protractor.demo.web.rest.util.HeaderUtil;
 import com.protractor.demo.web.rest.util.PaginationUtil;
 import io.swagger.annotations.ApiParam;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
@@ -31,6 +33,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class AuthorResource {
+
+    @Autowired
+    private BookRepository bookRepository;
 
     private final Logger log = LoggerFactory.getLogger(AuthorResource.class);
 
@@ -120,8 +125,8 @@ public class AuthorResource {
     @Timed
     public ResponseEntity<List<Book>> getAuthorBooks(@PathVariable Long id) {
         log.debug("REST request to get Books for Author : {}", id);
-
-        return null;
+        List<Book> books = bookRepository.findByAuthor_Id(id);
+        return new ResponseEntity<>(books, HttpStatus.OK);
     }
 
     /**
