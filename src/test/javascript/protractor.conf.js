@@ -21,7 +21,11 @@ exports.config = {
         account: './e2e/account/*.js',
         admin: './e2e/admin/*.js',
         entity: './e2e/entities/*.js',
-        author: './e2e/entities/author.js'
+        /**
+         * Smoke tests.
+         */
+        author: './e2e/entities/author.js',
+        book:   './e2e/entities/book.js'
     },
 
     capabilities: {
