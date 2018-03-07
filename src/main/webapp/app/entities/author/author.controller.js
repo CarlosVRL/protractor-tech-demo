@@ -52,7 +52,6 @@
 
             function assignBooks(entity) {
                 $log.debug("author.controller::assignBooks fetch all books for '" + entity.name + "'");
-
                 Book.query().$promise.then(function(response) {
                     var res = writeArrayToCsv(response);
                     entity.books = res;
