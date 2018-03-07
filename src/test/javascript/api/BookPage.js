@@ -62,4 +62,61 @@ module.exports = class BookPage {
         return this;
     }
 
+    save() {
+        element(by.css('button[type="submit"]')).click();
+        return this;
+    }
+
+    /**
+     * Create a default entity.
+     */
+    createJenkinsBook() {
+        this.goto();
+        this.create()
+            .setTitle(this.jenkinsTitle)
+            .setDescription(this.jenkinsDescription)
+            .setPublicationDate(this.jenkinsPublicationDate)
+            .setPrice(this.jenkinsPrice)
+            .save();
+        return this;
+    }
+
+    /**
+     * Select an entity.
+     */
+    selectByTitle(title) {
+        var title_field = element(by.cssContainingText('.ng-binding', title));
+        this.row = title_field.element(by.xpath('..'));
+        this.title = title;
+        return this;
+    }
+
+    getRow() {
+        return this.row;
+    }
+
+    /**
+     * Delete the selected entity.
+     */
+    trash() {
+        this.row.element(by.xpath('./td[last()]/div/button[last()]')).click();
+        element(by.css('button[type="submit"]')).click();
+    }
+
+    trashJenkinsBook() {
+        this.selectByTitle(this.jenkinsTitle).trash();
+        return this;
+    }
+
+    /**
+     * Check if the selected entity exists.
+     */
+    checkJenkinsBook() {
+        expect(this.selectByTitle(this.jenkinsTitle).getRow().isPresent())
+            .toBeTruthy('after creating a Book named "' + this.jenkinsTitle + '", the record should be visible');
+        return this;
+    }
+
+
+
 }

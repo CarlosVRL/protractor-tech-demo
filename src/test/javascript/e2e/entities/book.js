@@ -10,7 +10,10 @@ describe('Book e2e test', function () {
     });
 
     it('should create and delete a Book', function () {
-        bookPage.goto();
+        bookPage
+            .createJenkinsBook()
+            .checkJenkinsBook()
+            .trashJenkinsBook();
 
         browser.sleep(2500);
     });
