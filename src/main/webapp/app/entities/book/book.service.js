@@ -11,6 +11,7 @@
 
         return $resource(resourceUrl, {}, {
             'query': { method: 'GET', isArray: true},
+            'findAll': { method: 'GET', isArray: true},
             'findAllByAuthor': {
                 url: 'api/authors/:id/books',
                 method: 'GET',

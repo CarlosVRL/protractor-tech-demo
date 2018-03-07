@@ -57,7 +57,7 @@
              */
             function assignBooks(author) {
                 $log.debug("author.controller::assignBooks fetch all books for '" + author.name + "'");
-                Book.findAllByAuthor({id: author.id}).$promise.then(function(response) {
+                Book.findAllByAuthor({id:author.id}).$promise.then(function(response) {
                     author.books = writeArrayToCsv(response);
                 });
             }
