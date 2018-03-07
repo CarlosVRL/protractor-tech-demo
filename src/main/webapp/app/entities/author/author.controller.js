@@ -25,7 +25,7 @@
         loadAll();
 
         function loadAll () {
-            $log.debug("author.controller::loadAll");
+            $log.debug("author.controller::loadAll get a page of authors");
             Author.query({
                 page: vm.page,
                 size: vm.itemsPerPage,
@@ -51,17 +51,10 @@
             }
 
             function assignBooks(entity) {
-                $log.debug("Entity : " + entity.name);
+                $log.debug("author.controller::assignBooks fetch all books for '" + entity.name + "'");
+
                 Book.query().$promise.then(function(response) {
-                    var res = "";
-                    if (response.length == 0) {
-                        res = "None";
-                    } else {
-                        for (var i = 0; i < response.length - 1; i++) {
-                            res += response[i].title + ", ";
-                        }
-                        res += response[response.length - 1].title;
-                    }
+                    var res = writeArrayToCsv(response);
                     entity.books = res;
                 });
             }
@@ -80,6 +73,19 @@
         function loadPage(page) {
             vm.page = page;
             loadAll();
+        }
+
+        function writeArrayToCsv(arr) {
+            var res = "";
+            if (arr.length == 0) {
+                res = "None";
+            } else {
+                for (var i = 0; i < arr.length - 1; i++) {
+                    res += arr[i].title + ", ";
+                }
+                res += arr[arr.length - 1].title;
+            }
+            return res;
         }
     }
 })();
