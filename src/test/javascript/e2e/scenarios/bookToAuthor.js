@@ -25,8 +25,8 @@ describe('Book to Author scenario test', function () {
             .toBeFalsy('the book title "' + bookPage.getJenkinsTitle() + '" should NOT appear on the Author page');
 
         // Cleanup
-//        bookPage.trashJenkinsBook();
-//        authorPage.trashJenkinsAuthor();
+        bookPage.trashJenkinsBook();
+        authorPage.trashJenkinsAuthor();
     })
 
     afterAll(function () {
