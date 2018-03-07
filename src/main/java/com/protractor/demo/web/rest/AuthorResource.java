@@ -3,6 +3,7 @@ package com.protractor.demo.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.protractor.demo.domain.Author;
 
+import com.protractor.demo.domain.Book;
 import com.protractor.demo.repository.AuthorRepository;
 import com.protractor.demo.web.rest.util.HeaderUtil;
 import com.protractor.demo.web.rest.util.PaginationUtil;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.xml.ws.Response;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -109,6 +111,17 @@ public class AuthorResource {
         log.debug("REST request to get Author : {}", id);
         Author author = authorRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(author));
+    }
+
+    /**
+     * GET  /author/:id/books : get the books for the "id" author.
+     */
+    @GetMapping("/authors/{id}/books")
+    @Timed
+    public ResponseEntity<List<Book>> getAuthorBooks(@PathVariable Long id) {
+        log.debug("REST request to get Books for Author : {}", id);
+
+        return null;
     }
 
     /**
