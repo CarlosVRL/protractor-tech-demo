@@ -49,11 +49,17 @@
                 }
             }
 
-            function assignBooks(entity) {
-                $log.debug("author.controller::assignBooks fetch all books for '" + entity.name + "'");
+            /**
+             * Fetch all books for the author.
+             *
+             * @param entity the Author
+             * @return the CSV of books
+             */
+            function assignBooks(author) {
+                $log.debug("author.controller::assignBooks fetch all books for '" + author.name + "'");
                 Book.query().$promise.then(function(response) {
                     var res = writeArrayToCsv(response);
-                    entity.books = res;
+                    author.books = res;
                 });
             }
 
