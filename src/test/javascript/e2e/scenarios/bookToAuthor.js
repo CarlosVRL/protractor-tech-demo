@@ -22,7 +22,7 @@ describe('Book to Author scenario test', function () {
 
         authorPage.goto();
         expect(authorPage.selectByBookTitle(bookPage.getJenkinsTitle()).getRow().isPresent())
-            .toBeTruthy('the book should NOT appear on the Author page');
+            .toBeFalsy('the book title "' + bookPage.getJenkinsTitle() + '" should NOT appear on the Author page');
 
         // Cleanup
         bookPage.trashJenkinsBook();
