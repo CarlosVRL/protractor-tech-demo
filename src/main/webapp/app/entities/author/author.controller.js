@@ -44,7 +44,6 @@
                 vm.totalItems = headers('X-Total-Count');
                 for (var i = 0; i < data.length; i++) {
                     var entity = data[i];
-                    //entity.books = Book.query();
                     assignBooks(entity);
                     vm.authors.push(data[i]);
                 }
