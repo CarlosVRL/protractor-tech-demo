@@ -77,6 +77,7 @@ class AuthorPage {
      * Delete the selected entity.
      */
     trash() {
+        this.goto();
         this.row.element(by.xpath('./td[last()]/div/button[last()]')).click();
         element(by.css('button[type="submit"]')).click();
     }

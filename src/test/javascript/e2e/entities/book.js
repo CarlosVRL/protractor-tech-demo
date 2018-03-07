@@ -1,7 +1,7 @@
 'use strict';
 
-var loginPage = new (require('../../api/LoginPage'))();
-var bookPage  = new (require('../../api/BookPage'))();
+var loginPage  = new (require('../../api/LoginPage'))();
+var bookPage   = new (require('../../api/BookPage'))();
 
 describe('Book e2e test', function () {
 

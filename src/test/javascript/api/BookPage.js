@@ -58,7 +58,8 @@ module.exports = class BookPage {
     }
 
     setAuthor(author) {
-        console.log('setting author...');
+        element(by.id('field_author')).click();
+        element(by.css('option[label="' + author + '"]')).click();
         return this;
     }
 
@@ -99,6 +100,7 @@ module.exports = class BookPage {
      * Delete the selected entity.
      */
     trash() {
+        this.goto();
         this.row.element(by.xpath('./td[last()]/div/button[last()]')).click();
         element(by.css('button[type="submit"]')).click();
     }

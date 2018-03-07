@@ -25,7 +25,11 @@ exports.config = {
          * Smoke tests.
          */
         author: './e2e/entities/author.js',
-        book:   './e2e/entities/book.js'
+        book:   './e2e/entities/book.js',
+        /**
+         * Scenario Tests
+         */
+        bookToAuthor: './e2e/scenarios/bookToAuthor.js'
     },
 
     capabilities: {
